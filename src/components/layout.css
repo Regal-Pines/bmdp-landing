@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap");
+
+html {
+  font-family: "Gothic A1", sans-serif;
+}
+
+.bmdp-orange {
+  color: #fd4f00;
+}
+
+.bg-bmdp {
+  background-color: #fd4f00;
+}
+
+.bg-bmdp-2 {
+  background-color: #e5dbc1;
+  background-image: url("../images/worldmap_dots_white.svg");
+  background-position: center 5vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* background-size: cover; */
+}
+
+.register-button {
+  font-family: "Frank Ruhl Libre", serif;
+  border-radius: 0 !important;
+  height: 10%;
+  font-weight: 700 !important;
+  font-size: 22px;
+}
+
+.sec-info {
+  width: 100%;
+  height: 100%;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sec-counter {
+  width: 60%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: white;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.registrant-counter {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 80px;
+  font-weight: 700;
+  color: #fd4f00;
+}
+
+.sec-info-text {
+  width: 60%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.sec-info-cards {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.container-fluid {
+  max-width: 1080px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.hero-carousel {
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.outer-div > .container-fluid {
+  box-shadow: 0px 0px 8px 1px #000000;
+}
+
+.testimonial-text {
+  background-image: url("../images/quote\ icon.png");
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+
+.outer-div > .donor-avatar {
+  border-color: #f58326;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 50%;
+}
+
+.carousel-control-next-icon {
+  background-image: url("../images/arrow_R.png") !important;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("../images/arrow_L.png") !important;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.donor-testimonials h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.donor-testimonials h3 {
+  color: #f58326;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.donor-testimonials p {
+  color: #000;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.footer {
+  background-color: #e5dbc1;
+}
+
+.footer p {
+  font-size: 14px;
+}
+
+.contact-details {
+  font-weight: 700;
+}
+
+.copyright {
+  font-size: 12px !important;
+}
+
+.splash {
+  position: absolute;
+  float: left;
+  background-color: rgba(0, 0, 0, 0.1);
+
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+
+  border-left: 3px solid #fd4f00;
+}
+
+.aisha,
+.twoguy,
+.threeguy,
+.fourguy {
+  top: 20%;
+  left: 20%;
+}
+
+.join-the-register {
+  position: absolute;
+  color: #fd4f00;
+  font-weight: 700;
+  font-size: 38px;
+  margin-top: -12%;
+}
+
+.join-the-register span {
+  background-color: white;
+  font-family: "Frank Ruhl Libre", serif;
+}
