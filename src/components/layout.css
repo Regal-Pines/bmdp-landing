@@ -3,6 +3,7 @@
 
 html {
   font-family: "Gothic A1", sans-serif;
+  font-size: 10px;
 }
 
 .bmdp-orange {
@@ -27,7 +28,7 @@ html {
   border-radius: 0 !important;
   height: 10%;
   font-weight: 700 !important;
-  font-size: 22px;
+  font-size: 2.2rem !important;
 }
 
 .sec-info {
@@ -41,7 +42,7 @@ html {
   width: 60%;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.1);
-  font-size: 20px;
+  font-size: 2rem;
   outline-width: 1px;
   outline-style: solid;
   outline-color: white;
@@ -51,7 +52,7 @@ html {
 
 .registrant-counter {
   font-family: "Frank Ruhl Libre", serif;
-  font-size: 80px;
+  font-size: 8rem;
   font-weight: 700;
   color: #fd4f00;
 }
@@ -60,12 +61,12 @@ html {
   width: 60%;
   text-align: center;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 
 .sec-info-cards {
   font-weight: 500;
-  font-size: 12px;
+  font-size: 1.2rem;
 }
 
 .container-fluid {
@@ -79,6 +80,14 @@ html {
   outline-style: solid;
   outline-color: rgba(0, 0, 0, 0.05);
   position: relative;
+
+  justify-content: center;
+
+  grid-area: overlap;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+
+  z-index: 0;
 }
 
 .video-container {
@@ -126,19 +135,19 @@ html {
 }
 
 .donor-testimonials h1 {
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: 700;
 }
 
 .donor-testimonials h3 {
   color: #f58326;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 600;
 }
 
 .donor-testimonials p {
   color: #000;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 400;
 }
 
@@ -147,7 +156,7 @@ html {
 }
 
 .footer p {
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .contact-details {
@@ -155,7 +164,7 @@ html {
 }
 
 .copyright {
-  font-size: 12px !important;
+  font-size: 12/16rem !important;
 }
 
 .splash {
@@ -163,7 +172,7 @@ html {
   float: left;
   background-color: rgba(0, 0, 0, 0.1);
 
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 700;
   color: white;
 
@@ -171,22 +180,88 @@ html {
 }
 
 .aisha,
-.twoguy,
+.vignesh,
 .threeguy,
 .fourguy {
   top: 20%;
   left: 20%;
 }
 
-.join-the-register {
-  position: absolute;
-  color: #fd4f00;
+.sec-registration {
+  grid-area: overlap;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
   font-weight: 700;
-  font-size: 38px;
-  margin-top: -12%;
+  font-size: 3.8rem;
+
+  max-width: 800px;
+  width: 100%;
+  color: #000;
+
+  margin: 35px;
+
+  z-index: 1
 }
 
-.join-the-register span {
+.join-the-register {
+  position: relative;
+  color: #fd4f00;
+  top: 25%;
+}
+
+.sec-registration span {
   background-color: white;
   font-family: "Frank Ruhl Libre", serif;
+}
+
+.registration-form {
+  background-color: rgba(255, 255, 255, 0.65);
+  max-width: 400px;
+  padding: 30px;
+  max-height: 400px;
+}
+
+.registration-form input, .registration-form button {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  max-width: 350px;
+}
+
+.registration-form h1 {
+  font-size: 2.5rem;
+}
+
+.registration-form p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255 0.5);
+  max-width: 350px;
+}
+
+.sec-banner {
+  display: grid;
+  justify-items: center;
+}
+
+.sec-info-cards .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+@media only screen and (max-device-width: 1080px )  {
+
+  html {
+    font-size: 5px;
+  }
+
+  .donor-testimonials {
+    min-height: 35rem;
+  }
+
+  .sec-info-cards {
+    font-size: 1.6rem;
+  }
 }
