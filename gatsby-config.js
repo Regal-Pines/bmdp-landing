@@ -21,7 +21,7 @@ module.exports = {
       options: {
         projectId: "ee8solvh",
         dataset: "production",
-        token: process.env.SANITY_TOKEN
+        token: process.env.GATSBY_SANITY_TOKEN
       }
     }
   ],
