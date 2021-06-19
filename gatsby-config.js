@@ -16,5 +16,13 @@ module.exports = {
       },
       __key: "images",
     },
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        projectId: "ee8solvh",
+        dataset: "production",
+        token: process.env.SANITY_TOKEN
+      }
+    }
   ],
 };
