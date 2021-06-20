@@ -31,9 +31,12 @@ import "../styles/layout.css";
 // import donor_Asyraf from "../images/donor_Asyraf.png";
 
 export default function Layout({ data }) {
+
+  const initialRegCount = data.sanitySiteSettings.registrantCount;
+
   const [showModal, setShowModal] = useState(false);
   const [modalName, setModalName] = useState("donor");
-  const [regCount, setRegCount] = useState(999);
+  const [regCount, setRegCount] = useState( initialRegCount );
 
   const handleClose = () => {
     setShowModal(false);
@@ -70,7 +73,7 @@ export default function Layout({ data }) {
   fetch(`/.netlify/functions/get-registrant-count`)
     .then((res) => res.text())
     .then((text) => {
-      setRegCount( JSON.parse(text).data )
+      setRegCount( initialRegCount + JSON.parse(text).data )
     })
     .catch((error) => {
       console.log(error);
@@ -553,6 +556,11 @@ export default function Layout({ data }) {
             email.
           </p>
           <h2 className="orange">We need more help. Share the cause!</h2>
+          <div className="d-flex flex-row justify-content-between">
+            <StaticImage src="../images/icon_FB.png" alt="Facebook"/>
+            <StaticImage src="../images/icon_IG.png" alt="Facebook"/>
+            <StaticImage src="../images/icon_twitter.png" alt="Facebook"/>
+          </div>
         </Modal.Body>
       </Modal>
     </div>
