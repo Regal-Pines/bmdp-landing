@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Carousel from "react-bootstrap/Carousel";
 import Modal from "react-bootstrap/Modal";
+import fetch from "node-fetch";
 
 import { TelephoneFill, EnvelopeFill } from "react-bootstrap-icons";
 import { useForm } from "react-hook-form";
@@ -295,7 +296,7 @@ export default function Layout({ data }) {
         <div className="sec-info bg-bmdp-2 py-5 d-flex flex-column align-items-center">
           <div className="sec-counter pt-2 pb-4">
             {/* <div className="registrant-counter">{ formatNumber( data.sanitySiteSettings.registrantCount + data.allSanityRegistrant.totalCount )  }</div> */}
-            <div className="registrant-counter">{regCount}</div>
+            <div className="registrant-counter">{ formatNumber( regCount )}</div>
             <div>
               Registrants in Singapore and counting. Join the cause and make the
               community stronger. Give hope to patients in need.
