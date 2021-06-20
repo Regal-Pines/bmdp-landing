@@ -32,6 +32,7 @@ import "../styles/layout.css";
 export default function Layout({ data }) {
   const [showModal, setShowModal] = useState(false);
   const [modalName, setModalName] = useState("donor");
+  const [regCount, setRegCount] = useState(999);
 
   const handleClose = () => {
     setShowModal(false);
@@ -45,8 +46,6 @@ export default function Layout({ data }) {
   } = useForm();
 
   const handlePost = (formData, event) => {
-    console.log(formData);
-
     fetch(`/`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -56,8 +55,9 @@ export default function Layout({ data }) {
         setShowModal(true);
         setModalName(formData.name);
 
+        console.log("Here's the new count test: ", response);
+
         reset();
-        console.log(response);
       })
       .catch((error) => {
         console.log(error);
@@ -65,6 +65,15 @@ export default function Layout({ data }) {
 
     event.preventDefault();
   };
+
+  fetch(`/.netlify/functions/get-registrant-count`)
+    .then((res) => res.text())
+    .then((text) => {
+      setRegCount( JSON.parse(text).data )
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
   // Transforms the form data from the React Hook Form output to a format Netlify can read
   const encode = (data) => {
@@ -285,7 +294,8 @@ export default function Layout({ data }) {
         </div>
         <div className="sec-info bg-bmdp-2 py-5 d-flex flex-column align-items-center">
           <div className="sec-counter pt-2 pb-4">
-            <div className="registrant-counter">{ formatNumber( data.sanitySiteSettings.registrantCount + data.allSanityRegistrant.totalCount )  }</div>
+            {/* <div className="registrant-counter">{ formatNumber( data.sanitySiteSettings.registrantCount + data.allSanityRegistrant.totalCount )  }</div> */}
+            <div className="registrant-counter">{regCount}</div>
             <div>
               Registrants in Singapore and counting. Join the cause and make the
               community stronger. Give hope to patients in need.
@@ -549,5 +559,5 @@ export default function Layout({ data }) {
 }
 
 function formatNumber(num) {
-  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
