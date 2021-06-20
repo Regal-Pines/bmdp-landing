@@ -294,6 +294,51 @@ html {
   border-width: 0px !important;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap");
+
+html {
+  font-family: "Gothic A1", sans-serif;
+  font-size: 10px;
+}
+
+h2, h1 {
+  font-family: "Frank Ruhl Libre", serif !important;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+
+.modal-header {
+  background-color: #FD4F00 ;
+  padding: 0px;
+}
+
+.modal-header .close {
+  margin: 5px 5px;
+  font-size: 4rem!important;
+  color: white;
+  text-shadow: none;
+  font-weight: 400;
+  opacity: 1;
+}
+
+.modal-body {
+  text-align: center;
+}
+
+.orange {
+  color: #FD4F00 ;
+}
+
+
 @media only screen and (max-width: 1080px) {
   html {
     font-size: 8px;

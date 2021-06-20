@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Carousel from "react-bootstrap/Carousel";
+import Modal from "react-bootstrap/Modal";
 
 import { TelephoneFill, EnvelopeFill } from "react-bootstrap-icons";
 import { useForm } from "react-hook-form";
 
 import { StaticImage } from "gatsby-plugin-image";
-import Success from "../pages/success";
 
 // Styles
 import "../styles/layout.css";
@@ -29,7 +29,14 @@ import "../styles/layout.css";
 // import donor_KelvinL from "../images/donor_KelvinL.png";
 // import donor_Asyraf from "../images/donor_Asyraf.png";
 
-export default function Layout() {
+export default function Layout({ data }) {
+  const [showModal, setShowModal] = useState(false);
+  const [modalName, setModalName] = useState("donor");
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
   const {
     register,
     handleSubmit,
@@ -37,13 +44,8 @@ export default function Layout() {
     formState: { errors },
   } = useForm();
 
-  var registeredUserName = "";
-
   const handlePost = (formData, event) => {
     console.log(formData);
-
-    registeredUserName = formData.name;
-    console.log( registeredUserName );
 
     fetch(`/`, {
       method: "POST",
@@ -51,6 +53,9 @@ export default function Layout() {
       body: encode({ "form-name": "contact-form", ...formData }),
     })
       .then((response) => {
+        setShowModal(true);
+        setModalName(formData.name);
+
         reset();
         console.log(response);
       })
@@ -71,11 +76,11 @@ export default function Layout() {
   };
 
   return (
-    <div className="outer-div">
+    <div className="outer-div" id="register">
       <Container fluid>
         <Navbar bg="bmdp" sticky="top">
           <div className="d-flex flex-row w-100 justify-content-between px-5 align-items-center">
-            <Navbar.Brand href="#home">
+            <Navbar.Brand>
               <StaticImage
                 src="../images/BMDP logo (white).png"
                 width={90}
@@ -84,7 +89,11 @@ export default function Layout() {
                 alt="BMDP Logo"
               />
             </Navbar.Brand>
-            <Button className="register-button px-5" variant="light">
+            <Button
+              className="register-button px-5"
+              variant="light"
+              href="javascript:document.getElementById('inputName').focus()"
+            >
               Register
             </Button>
           </div>
@@ -194,6 +203,7 @@ export default function Layout() {
                 />
 
                 <input
+                  id="inputName"
                   type="text"
                   name="name"
                   {...register("name", { required: true })}
@@ -275,7 +285,7 @@ export default function Layout() {
         </div>
         <div className="sec-info bg-bmdp-2 py-5 d-flex flex-column align-items-center">
           <div className="sec-counter pt-2 pb-4">
-            <div className="registrant-counter">112,300</div>
+            <div className="registrant-counter">{ formatNumber( data.sanitySiteSettings.registrantCount + data.allSanityRegistrant.totalCount )  }</div>
             <div>
               Registrants in Singapore and counting. Join the cause and make the
               community stronger. Give hope to patients in need.
@@ -514,7 +524,30 @@ export default function Layout() {
         </div>
       </Container>
 
-      <Success user={ registeredUserName }></Success>
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <StaticImage
+            src="../images/icon_hearttree 1.png"
+            alt="Modal Header Hearts"
+          />
+        </Modal.Header>
+        <Modal.Body>
+          <h1>
+            Thank you, <span className="orange">{modalName}</span>
+          </h1>
+          <p>
+            You’ve done the right thing. Not many have taken this step and we
+            hope that your actions today will inspire others to follow. In a few
+            days, our donor care representatives will be in touch with you via
+            email.
+          </p>
+          <h2 className="orange">We need more help. Share the cause!</h2>
+        </Modal.Body>
+      </Modal>
     </div>
   );
+}
+
+function formatNumber(num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
