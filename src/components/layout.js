@@ -30,6 +30,37 @@ import "../styles/layout.css";
 // import donor_KelvinL from "../images/donor_KelvinL.png";
 // import donor_Asyraf from "../images/donor_Asyraf.png";
 
+function Testimonial(props) {
+  return (
+    <div className="testimonial">
+      <div className="image-section">
+        <div className="outer-div">
+          <a href={props.href} target="_blank" rel="noreferrer">
+            {/* Pass Static Image in as child because we can't pass src through props for static image */}
+            {props.children}
+          </a>
+        </div>
+      </div>
+      <div className="testimonial-text">
+        <h3 className="pl-5 pt-4">{props.name}</h3>
+        <p className="pl-5">{props.testimonial}</p>
+      </div>
+    </div>
+  );
+}
+
+function MiniInfoSnipCell(props) {
+  return (
+    <div className="col-6 col-md-3 px-4">
+      <div className="row justify-content-center">{props.children}</div>
+      <div className="row justify-content-center mt-4">
+        <h3>{props.title}</h3>
+      </div>
+      <div className="row justify-content-center pb-5">{props.text}</div>
+    </div>
+  );
+}
+
 export default function Layout({ data }) {
   const [showModal, setShowModal] = useState(false);
   const [modalName, setModalName] = useState("donor");
@@ -110,13 +141,13 @@ export default function Layout({ data }) {
               variant="light"
               href="javascript:document.getElementById('inputName').focus()"
             >
-              Register
+              Register Now
             </Button>
           </div>
         </Navbar>
 
         <div className="sec-banner">
-          <div className="hero-carousel w-100">
+          <div className="hero-carousel w-100 desktop">
             <Carousel controls={false} indicators={false}>
               <Carousel.Item>
                 <div className="splash-container">
@@ -174,7 +205,66 @@ export default function Layout({ data }) {
               </Carousel.Item>
             </Carousel>
           </div>
-          <div className="sec-registration">
+          
+          <div className="hero-carousel mobile w-100">
+            <Carousel controls={false} indicators={false}>
+              <Carousel.Item>
+                <div className="splash-container">
+                  <div className="static-image-wrapper">
+                    <StaticImage
+                      className="d-block w-100"
+                      src="../images/Bsplash_1_mobile.png"
+                      alt="First slide"
+                    />
+                  </div>
+                  <div className="splash-text-container">
+                    <div className="splash aisha">
+                      <span className="pl-3">Aisha, 24. Undergraduate.</span>
+                      <br />
+                      <span className="pl-3">A marrow donor.</span>
+                    </div>
+                  </div>
+                </div>
+              </Carousel.Item>
+              <Carousel.Item>
+                <div className="splash-container">
+                  <div className="static-image-wrapper">
+                    <StaticImage
+                      className="d-block w-100"
+                      src="../images/Bsplash_2_mobile.png"
+                      alt="Second slide"
+                    />
+                  </div>
+                  <div className="splash-text-container">
+                    <div className="splash vignesh">
+                      <span className="px-3">Vignesh, 33. Sales Manager.</span>
+                      <br />
+                      <span className="px-3">A marrow donor.</span>
+                    </div>
+                  </div>
+                </div>
+              </Carousel.Item>
+              <Carousel.Item>
+                <div className="splash-container">
+                  <div className="static-image-wrapper">
+                    <StaticImage
+                      className="d-block w-100"
+                      src="../images/Bsplash_3_mobile.png"
+                      alt="Third slide"
+                    />
+                  </div>
+                  <div className="splash-text-container">
+                    <div className="splash joshua">
+                      <span className="px-3">Joshua, 38. Senior Engineer.</span>
+                      <br />
+                      <span className="px-3">A marrow donor.</span>
+                    </div>
+                  </div>
+                </div>
+              </Carousel.Item>
+            </Carousel>
+          </div>
+          <div className="sec-registration mobile">
             <div className="join-the-register">
               <span className="px-3">Join the register.</span>
               <br />
@@ -182,7 +272,16 @@ export default function Layout({ data }) {
               <br />
               <span className="px-3">for every patient.</span>
             </div>
-            <div className="registration-form d-flex flex-column">
+          </div>
+          <div className="sec-registration form-container">
+            <div className="join-the-register desktop">
+              <span className="px-3">Join the register.</span>
+              <br />
+              <span className="px-3">Help us find a donor</span>
+              <br />
+              <span className="px-3">for every patient.</span>
+            </div>
+            <div className="registration-form">
               <h1>Choose to save a life.</h1>
               <form
                 onSubmit={handleSubmit(handlePost)}
@@ -284,10 +383,18 @@ export default function Layout({ data }) {
             </div>
           </div>
         </div>
-        <div className="sec-info bg-bmdp-2 py-5 d-flex flex-column align-items-center">
+        <div className="sec-info bg-bmdp-2 d-flex flex-column align-items-center">
           <div className="sec-counter pt-2 pb-4">
             <div className="registrant-counter">
-              {regCount > 0 ? formatNumber(regCount) : <div><span class="one">.</span><span class="two">.</span><span class="three">.</span></div> }
+              {regCount > 0 ? (
+                formatNumber(regCount)
+              ) : (
+                <div>
+                  <span className="one">.</span>
+                  <span className="two">.</span>
+                  <span className="three">.</span>
+                </div>
+              )}
             </div>
             <div>
               Registrants in Singapore and counting. Join the cause and make the
@@ -306,72 +413,52 @@ export default function Layout({ data }) {
           </div>
           <div className="container sec-info-cards">
             <div className="row px-5">
-              <div className="col-6 col-md-3 px-5">
-                <div className="row justify-content-center">
-                  <StaticImage
-                    alt="Verify Icon"
-                    className="img-fluid"
-                    src="../images/icon_touch.png"
-                  />
-                </div>
-                <div className="row justify-content-center mt-2">
-                  <h3>Verify</h3>
-                </div>
-                <div className="row justify-content-center">
-                  Once you’re identified as a match, we will collect a small
-                  blood sample from you to ensure you are the right fit.
-                </div>
-              </div>
-              <div className="col-6 col-md-3 px-5">
-                <div className="row justify-content-center">
-                  <StaticImage
-                    alt="Workup Icon"
-                    className="img-fluid"
-                    src="../images/icon_workup.png"
-                  />
-                </div>
-                <div className="row justify-content-center mt-2">
-                  <h3>Workup</h3>
-                </div>
-                <div className="row justify-content-center">
-                  We will introduce you to your doctor who will conduct a
-                  thorough check-up to ensure that you are fit to donate.
-                </div>
-              </div>
-              <div className="col-6 col-md-3 px-5">
-                <div className="row justify-content-center">
-                  <StaticImage
-                    alt="Donate Icon"
-                    className="img-fluid"
-                    src="../images/icon_give.png"
-                  />
-                </div>
-                <div className="row justify-content-center mt-2">
-                  <h3>Donate</h3>
-                </div>
-                <div className="row justify-content-center">
-                  You may opt for the Peripheral Blood Stem Cell or Bone Marrow
+              <MiniInfoSnipCell
+                title={"Verify"}
+                text={`Once you’re identified as a match, we will collect a small
+                  blood sample from you to ensure you are the right fit.`}
+              >
+                <StaticImage
+                  alt="Verify Icon"
+                  className="img-fluid"
+                  src="../images/icon_touch.png"
+                />
+              </MiniInfoSnipCell>
+              <MiniInfoSnipCell
+                title={"Workup"}
+                text={`We will introduce you to your doctor who will conduct a
+                  thorough check-up to ensure that you are fit to donate.`}
+              >
+                <StaticImage
+                  alt="Workup Icon"
+                  className="img-fluid"
+                  src="../images/icon_workup.png"
+                />
+              </MiniInfoSnipCell>
+              <MiniInfoSnipCell
+                title={"Donate"}
+                text={`You may opt for the Peripheral Blood Stem Cell or Bone Marrow
                   Collection. The donation method may also depend on the
-                  patient’s needs.
-                </div>
-              </div>
-              <div className="col-6 col-md-3 px-5">
-                <div className="row justify-content-center">
-                  <StaticImage
-                    alt="Recover Icon"
-                    className="img-fluid"
-                    src="../images/icon_recover.png"
-                  />
-                </div>
-                <div className="row justify-content-center mt-2">
-                  <h3>Recover</h3>
-                </div>
-                <div className="row justify-content-center">
-                  Depending on the donation method, you may experience
+                  patient’s needs.`}
+              >
+                <StaticImage
+                  alt="Donate Icon"
+                  className="img-fluid"
+                  src="../images/icon_give.png"
+                />
+              </MiniInfoSnipCell>
+              <MiniInfoSnipCell
+                title={"Recover"}
+                text={`Depending on the donation method, you may experience
                   short-term side effects. Your stem cells/bone marrow will
-                  regenerate within 6 weeks.
-                </div>
-              </div>
+                  regenerate within 6 weeks.`}
+              >
+                <StaticImage
+                  alt="Recover Icon"
+                  className="img-fluid"
+                  src="../images/icon_recover.png"
+                />
+              </MiniInfoSnipCell>
             </div>
           </div>
         </div>
@@ -385,132 +472,84 @@ export default function Layout({ data }) {
             allowFullScreen
           ></iframe>
         </div>
-        <div className="donor-testimonials py-5">
+        <div className="donor-testimonials">
           <h1 className="text-center pb-4 bmdp-orange">Donor Testimonials</h1>
-          <Carousel indicators={false}>
+          <Carousel indicators={false} interval={null}>
             <Carousel.Item>
-              <div className="d-flex flex-row justify-content-center">
-                <div className=" d-flex flex-column justify-content-start align-items-end w-25">
-                  <div className="outer-div">
-                    <a
-                      href="https://bmdp.org/testimonials"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <StaticImage
-                        alt="Tamil Selvi"
-                        className="donor-avatar p-2 img-fluid"
-                        src="../images/donor_TamilS.png"
-                      />
-                    </a>
-                  </div>
-                </div>
-                <div className="testimonial-text d-flex flex-column justify-content-left w-50">
-                  <h3 className="pl-5 pt-4">Tamil Selvi</h3>
-                  <p className="pl-5">
-                    “The donation experience through the PBSC method was
-                    worthwhile. It even motivated me to create more awareness
-                    within the community to help improve the chances of other
-                    patients in finding a donor match.”
-                  </p>
-                </div>
-              </div>
+              <Testimonial
+                name={"Tamil Selvi"}
+                href={"https://bmdp.org/testimonials"}
+                testimonial={`“The donation experience through the PBSC method was
+                worthwhile. It even motivated me to create more awareness
+                within the community to help improve the chances of other
+                patients in finding a donor match.”`}
+              >
+                <StaticImage
+                  alt="Tamil Selvi"
+                  className="donor-avatar p-2 img-fluid"
+                  src="../images/donor_TamilS.png"
+                />
+              </Testimonial>
             </Carousel.Item>
             <Carousel.Item>
-              <div className="d-flex flex-row justify-content-center">
-                <div className=" d-flex flex-column justify-content-start align-items-end w-25">
-                  <div className="outer-div">
-                    <a
-                      href="https://www.youtube.com/watch?v=zHv24sJ-Emw"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <StaticImage
-                        alt="Marie Ann Wong"
-                        className="donor-avatar p-2 img-fluid"
-                        src="../images/donor_marieanne.png"
-                      />
-                    </a>
-                  </div>
-                </div>
-                <div className="testimonial-text d-flex flex-column justify-content-left w-50">
-                  <h3 className="pl-5 pt-4">Marie Ann Wong</h3>
-                  <p className="pl-5">
-                    “I would urge everyone to put their fears aside and be
-                    confident as donating bone marrow is a safe and easy
-                    procedure with no long-term side effects. A simple cheek
-                    swab can help increase the odds of giving someone out there
-                    in need with a second chance at life.”
-                  </p>
-                </div>
-              </div>
+              <Testimonial
+                name={"Marie Ann Wong"}
+                href={"https://www.youtube.com/watch?v=zHv24sJ-Emw"}
+                testimonial={`“I would urge everyone to put their fears aside and be
+                confident as donating bone marrow is a safe and easy
+                procedure with no long-term side effects. A simple cheek
+                swab can help increase the odds of giving someone out there
+                in need with a second chance at life.”`}
+              >
+                <StaticImage
+                  alt="Marie Ann Wong"
+                  className="donor-avatar p-2 img-fluid"
+                  src="../images/donor_marieanne.png"
+                />
+              </Testimonial>
             </Carousel.Item>
             <Carousel.Item>
-              <div className="d-flex flex-row justify-content-center">
-                <div className=" d-flex flex-column justify-content-start align-items-end w-25">
-                  <div className="outer-div">
-                    <a
-                      href="https://www.youtube.com/watch?v=aX5j0QVHqB4"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <StaticImage
-                        alt="Kelvin Lin"
-                        className="donor-avatar p-2 img-fluid"
-                        src="../images/donor_KelvinL.png"
-                      />
-                    </a>
-                  </div>
-                </div>
-                <div className="testimonial-text d-flex flex-column justify-content-left w-50">
-                  <h3 className="pl-5 pt-4">Kelvin Lin</h3>
-                  <p className="pl-5">
-                    “I went through the PBSC method and the process is safe.
-                    Being a father now makes me feel that the whole donation was
-                    more meaningful. My biggest reward is having the opportunity
-                    to save someone’s life.”
-                  </p>
-                </div>
-              </div>
+              <Testimonial
+                name={"Kelvin Lin"}
+                href={"https://www.youtube.com/watch?v=aX5j0QVHqB4"}
+                testimonial={`“I went through the PBSC method and the process is safe.
+                Being a father now makes me feel that the whole donation was
+                more meaningful. My biggest reward is having the opportunity
+                to save someone’s life.”`}
+              >
+                <StaticImage
+                  alt="Kelvin Lin"
+                  className="donor-avatar p-2 img-fluid"
+                  src="../images/donor_KelvinL.png"
+                />
+              </Testimonial>
             </Carousel.Item>
             <Carousel.Item>
-              <div className="d-flex flex-row justify-content-center">
-                <div className=" d-flex flex-column justify-content-start align-items-end w-25">
-                  <div className="outer-div">
-                    <a
-                      href="https://www.youtube.com/watch?v=6RbaPEEKRvg"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <StaticImage
-                        alt="Muhammad Asyraf"
-                        className="donor-avatar p-2 img-fluid"
-                        src="../images/donor_Asyraf.png"
-                      />
-                    </a>
-                  </div>
-                </div>
-                <div className="testimonial-text d-flex flex-column justify-content-left w-50">
-                  <h3 className="pl-5 pt-4">Muhammad Asyraf</h3>
-                  <p className="pl-5">
-                    “Educate & understand why and who you’re helping so you will
-                    remain committed in your journey after you sign up. I was
-                    happy that I’m able to help someone and I would do it again
-                    without second thoughts.”
-                  </p>
-                </div>
-              </div>
+              <Testimonial
+                name={"Muhammad Asyraf"}
+                href={"https://www.youtube.com/watch?v=6RbaPEEKRvg"}
+                testimonial={`“Educate & understand why and who you’re helping so you will
+                remain committed in your journey after you sign up. I was
+                happy that I’m able to help someone and I would do it again
+                without second thoughts.”`}
+              >
+                <StaticImage
+                  alt="Muhammad Asyraf"
+                  className="donor-avatar p-2 img-fluid"
+                  src="../images/donor_Asyraf.png"
+                />
+              </Testimonial>
             </Carousel.Item>
           </Carousel>
         </div>
-        <div className="footer p-4 d-flex flex-row justify-content-between align-items-end">
-          <div className="ml-5">
+        <div className="footer">
+          <div className="footer-logo">
             <StaticImage
               alt="BMDP Logo"
               src="../images/BMDP logo (pantone) 1.png"
             />
           </div>
-          <div className="mr-5 text-right">
+          <div className="footer-text">
             <p>
               8 Sinaran Drive, #03-02 Novena Specialist Center, Singapore 307470
             </p>
@@ -519,20 +558,25 @@ export default function Layout({ data }) {
               <span className="mx-2"></span> <EnvelopeFill color="#f58326" />{" "}
               admin@bmdp.org
             </p>
-            <p className="copyright">
+            <p className="copyright rp">
               Copyright © 2021 The Bone Marrow Donor Programme. All rights
-              reserved. Web design by Regal Pines.
+              reserved. Web design by{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.regal-pines.com/"
+              >
+                Regal Pines
+              </a>
+              .
             </p>
           </div>
         </div>
       </Container>
 
       <Modal show={showModal} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <StaticImage
-            src="../images/icon_hearttree 1.png"
-            alt="Modal Header Hearts"
-          />
+        <Modal.Header>
+          <StaticImage src="../images/image 3.png" alt="Modal Header Hearts" />
         </Modal.Header>
         <Modal.Body>
           <div className="p-5 modal-thanks">
@@ -548,21 +592,33 @@ export default function Layout({ data }) {
             <h2 className="orange">We need more help. Share the cause!</h2>
             <div className="d-flex flex-row justify-content-center">
               <div className="social m-3">
-                <a href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fbmdp.org%2F&t=Join%20the%20Bone%20Marrow%20Donor%20Programme%2C%20it%27s%20free%20and%20saves%20lives." 
-                      target="_blank"
-                      rel="noreferrer" ><StaticImage src="../images/icon_FB.png" alt="Facebook" /></a>
-              </div>
-              <div className="social m-3">
-                <a href="https://www.instagram.com/bmdpsg/" 
-                      target="_blank"
-                      rel="noreferrer">
-                  <StaticImage src="../images/icon_IG.png" alt="Instagram" href=""/>
+                <a
+                  href="https://www.facebook.com/sharer/sharer.php?u=https://bmdp.org/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <StaticImage src="../images/icon_FB.png" alt="Facebook" />
                 </a>
               </div>
               <div className="social m-3">
-                <a href="https://twitter.com/intent/tweet?text=Join%20the%20Bone%20Marrow%20Donor%20Programme%2C%20it%27s%20free%20and%20saves%20lives." 
-                      target="_blank"
-                      rel="noreferrer">
+                <a
+                  href="https://www.instagram.com/bmdpsg/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <StaticImage
+                    src="../images/icon_IG.png"
+                    alt="Instagram"
+                    href=""
+                  />
+                </a>
+              </div>
+              <div className="social m-3">
+                <a
+                  href="https://twitter.com/intent/tweet?url=https://bmdp.org/&text=I've%20just%20registered%20as%20a%20marrow%20donor!%20You%20too%20can%20join%20the%20cause%20and%20together%20we%20can%20save%20lives."
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <StaticImage src="../images/icon_twitter.png" alt="Twitter" />
                 </a>
               </div>

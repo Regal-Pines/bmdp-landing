@@ -6,6 +6,16 @@ html {
   font-size: 10px;
 }
 
+.desktop {
+  visibility: visible;
+  display: block;
+}
+
+.mobile {
+  visibility: hidden;
+  display: none;
+}
+
 .bmdp-orange {
   color: #fd4f00;
 }
@@ -36,6 +46,8 @@ html {
   height: 100%;
   font-weight: 600;
   text-align: center;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 .sec-counter {
@@ -84,8 +96,8 @@ html {
   justify-content: center;
 
   grid-area: overlap;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
+  grid-column: 1/3;
+  grid-row: 1/2;
 
   z-index: 0;
 }
@@ -108,10 +120,21 @@ html {
   box-shadow: 0px 0px 8px 1px #000000;
 }
 
+.testimonial {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .testimonial-text {
   background-image: url("../images/quote\ icon.png");
   background-repeat: no-repeat;
   background-position: top left;
+  width: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
 }
 
 .outer-div > .donor-avatar {
@@ -135,6 +158,11 @@ html {
   height: 30px !important;
 }
 
+.donor-testimonials {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 .donor-testimonials h1 {
   font-size: 3rem;
   font-weight: 700;
@@ -153,7 +181,12 @@ html {
 }
 
 .footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
   background-color: #e5dbc1;
+  padding: 1.5rem;
 }
 
 .footer p {
@@ -177,7 +210,7 @@ html {
   align-items: flex-start;
   justify-self: center;
 
-  max-width: 1080px;
+  max-width: 900px;
   width: 100%;
 
   padding: 2%;
@@ -211,6 +244,8 @@ html {
 
 .sec-registration {
   grid-area: overlap;
+  grid-column: 1/3;
+  grid-row: 1/2;
 
   display: flex;
   flex-direction: row;
@@ -220,7 +255,7 @@ html {
   font-weight: 700;
   font-size: 3.8rem;
 
-  max-width: 1080px;
+  max-width: 900px;
   width: 100%;
   color: #000;
 
@@ -244,6 +279,9 @@ html {
   max-width: 400px;
   padding: 3%;
   max-height: 400px;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .registration-form input,
@@ -273,7 +311,8 @@ html {
 
 .sec-banner {
   display: grid;
-  justify-items: center;
+  justify-items: center;  
+  background-color: #e5dbc1;
 }
 
 .splash-container {
@@ -283,6 +322,10 @@ html {
 .sec-info-cards .row {
   margin-left: 0 !important;
   margin-right: 0 !important;
+}
+
+.sec-info-cards h3 {
+  font-weight: 700;
 }
 
 .submit-button {
@@ -297,61 +340,73 @@ html {
 .one {
   opacity: 0;
   -webkit-animation: dot 1.3s infinite;
-  -webkit-animation-delay: 0.0s;
+  -webkit-animation-delay: 0s;
   animation: dot 1.3s infinite;
-  animation-delay: 0.0s;
+  animation-delay: 0s;
 }
 
 .two {
   opacity: 0;
   -webkit-animation: dot 1.3s infinite;
   -webkit-animation-delay: 0.2s;
-    animation: dot 1.3s infinite;
-    animation-delay: 0.2s;
+  animation: dot 1.3s infinite;
+  animation-delay: 0.2s;
 }
 
 .three {
   opacity: 0;
   -webkit-animation: dot 1.3s infinite;
   -webkit-animation-delay: 0.3s;
-   animation: dot 1.3s infinite;
-   animation-delay: 0.3s;
+  animation: dot 1.3s infinite;
+  animation-delay: 0.3s;
 }
 
 @-webkit-keyframes dot {
-    0% { opacity: 0; }
-   50% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes dot {
-    0% { opacity: 0; }
-   50% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-h2, h1 {
+.modal-content h2,
+.modal-content h1 {
   font-family: "Frank Ruhl Libre", serif !important;
   font-weight: 700;
 }
 
-h1 {
+.modal-content h1 {
   font-size: 2.5rem;
 }
 
-p {
+.modal-content p {
   font-size: 1.6rem;
 }
 
-
 .modal-header {
-  background-color: #FD4F00 ;
+  background-color: #fd4f00;
   padding: 0px !important;
 }
 
 .modal-header .close {
   margin: 5px 5px !important;
-  font-size: 4rem!important;
+  font-size: 4rem !important;
   color: white;
   text-shadow: none;
   font-weight: 400;
@@ -362,16 +417,67 @@ p {
   text-align: center;
 }
 
-.modal-thanks h1, .modal-thanks h2 {
+.modal-thanks h1,
+.modal-thanks h2 {
   font-weight: 700;
 }
 
 .orange {
-  color: #FD4F00 ;
+  color: #fd4f00;
 }
 
+.rp a:link {
+  color: #47b0cc;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.rp a:visited {
+  color: #fd4f00;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.rp a:hover {
+  color: #47b0cc;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.rp a:active {
+  color: #47b0cc;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.footer-text {
+  text-align: right;
+  margin-right: 2.5rem;
+}
+
+.footer-logo {
+  margin-left: 2.5rem;
+}
+
+.testimonial .image-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 25%;
+}
 
 @media only screen and (max-width: 1080px) {
+  .desktop {
+    visibility: hidden;
+    display: none;
+  }
+
+  .mobile {
+    visibility: visible;
+    display: block;
+  }
+
   html {
     font-size: 8px;
   }
@@ -381,23 +487,90 @@ p {
   }
 
   .sec-info-cards {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 
   .sec-registration {
-    font-size: 2.6vw !important;
+    font-size: 4.2vw !important;
+    display: flex;
+  }
+
+  .sec-registration.mobile {
+    grid-area: overlap;
+    grid-column: 1/3;
+    grid-row: 1/2;
+  }
+
+  .sec-registration.form-container {
+    grid-area: auto;
+    grid-column: 1/3;
+    justify-content: center;
+  }
+  
+  .aisha,
+  .vignesh,
+  .joshua,
+  .fourguy {
+    height: 9.5vw;    
+    font-size: 3vw !important;
+    position: relative;
+    top: 15%;
   }
 
   .registration-form {
-    max-width: 40%;
+    max-width: 65%;
+    margin-top: 20px;
   }
 
   .registration-form input,
   .registration-form button {
-    font-size: 1vw;
+    font-size: 1.8vw;
   }
 
   .registration-form h1 {
-    font-size: 2vw;
+    font-size: 3vw;
+  }
+
+  .registrant-counter {
+    font-size: 12vw;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+  }
+
+  .footer-text {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .testimonial {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .testimonial .image-section {
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+  }
+
+  .testimonial-text {
+    width: 65%;
+  }
+
+  .footer-text {
+    margin-right: 0;
+  }
+
+  .footer-logo {
+    margin-left: 0;
   }
 }
