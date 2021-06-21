@@ -286,9 +286,8 @@ export default function Layout({ data }) {
         </div>
         <div className="sec-info bg-bmdp-2 py-5 d-flex flex-column align-items-center">
           <div className="sec-counter pt-2 pb-4">
-            {/* <div className="registrant-counter">{ formatNumber( data.sanitySiteSettings.registrantCount + data.allSanityRegistrant.totalCount )  }</div> */}
             <div className="registrant-counter">
-              {regCount > 0 ? formatNumber(regCount) : "..."}
+              {regCount > 0 ? formatNumber(regCount) : <div><span class="one">.</span><span class="two">.</span><span class="three">.</span></div> }
             </div>
             <div>
               Registrants in Singapore and counting. Join the cause and make the
@@ -549,13 +548,23 @@ export default function Layout({ data }) {
             <h2 className="orange">We need more help. Share the cause!</h2>
             <div className="d-flex flex-row justify-content-center">
               <div className="social m-3">
-                <StaticImage src="../images/icon_FB.png" alt="Facebook" />
+                <a href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fbmdp.org%2F&t=Join%20the%20Bone%20Marrow%20Donor%20Programme%2C%20it%27s%20free%20and%20saves%20lives." 
+                      target="_blank"
+                      rel="noreferrer" ><StaticImage src="../images/icon_FB.png" alt="Facebook" /></a>
               </div>
               <div className="social m-3">
-                <StaticImage src="../images/icon_IG.png" alt="Instagram" />
+                <a href="https://www.instagram.com/bmdpsg/" 
+                      target="_blank"
+                      rel="noreferrer">
+                  <StaticImage src="../images/icon_IG.png" alt="Instagram" href=""/>
+                </a>
               </div>
               <div className="social m-3">
-                <StaticImage src="../images/icon_twitter.png" alt="Twitter" />
+                <a href="https://twitter.com/intent/tweet?text=Join%20the%20Bone%20Marrow%20Donor%20Programme%2C%20it%27s%20free%20and%20saves%20lives." 
+                      target="_blank"
+                      rel="noreferrer">
+                  <StaticImage src="../images/icon_twitter.png" alt="Twitter" />
+                </a>
               </div>
             </div>
           </div>

@@ -294,12 +294,40 @@ html {
   border-width: 0px !important;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap");
+.one {
+  opacity: 0;
+  -webkit-animation: dot 1.3s infinite;
+  -webkit-animation-delay: 0.0s;
+  animation: dot 1.3s infinite;
+  animation-delay: 0.0s;
+}
 
-html {
-  font-family: "Gothic A1", sans-serif;
-  font-size: 10px;
+.two {
+  opacity: 0;
+  -webkit-animation: dot 1.3s infinite;
+  -webkit-animation-delay: 0.2s;
+    animation: dot 1.3s infinite;
+    animation-delay: 0.2s;
+}
+
+.three {
+  opacity: 0;
+  -webkit-animation: dot 1.3s infinite;
+  -webkit-animation-delay: 0.3s;
+   animation: dot 1.3s infinite;
+   animation-delay: 0.3s;
+}
+
+@-webkit-keyframes dot {
+    0% { opacity: 0; }
+   50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes dot {
+    0% { opacity: 0; }
+   50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 h2, h1 {

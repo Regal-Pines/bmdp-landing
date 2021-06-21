@@ -7,6 +7,7 @@ const client = sanityClient({
 });
 
 //https://ee8solvh.api.sanity.io/v2021-06-07/data/query/production/?query=count(*[_type==%22registrant%22])
+//https://ee8solvh.api.sanity.io/v2021-06-07/data/query/production/?query=*[_id==%27siteSettings%27]{registrantCount}
 const query = "count(*[_type=='registrant'])";
 const querySettings = "*[_id=='siteSettings']{registrantCount}";
 
