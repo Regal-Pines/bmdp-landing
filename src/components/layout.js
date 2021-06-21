@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
@@ -31,15 +31,13 @@ import "../styles/layout.css";
 // import donor_Asyraf from "../images/donor_Asyraf.png";
 
 export default function Layout({ data }) {
-
-  const initialRegCount = data.sanitySiteSettings.registrantCount;
-
   const [showModal, setShowModal] = useState(false);
   const [modalName, setModalName] = useState("donor");
-  const [regCount, setRegCount] = useState( initialRegCount );
+  const [regCount, setRegCount] = useState(0);
 
   const handleClose = () => {
     setShowModal(false);
+    updateRegistrants();
   };
 
   const {
@@ -70,14 +68,19 @@ export default function Layout({ data }) {
     event.preventDefault();
   };
 
-  fetch(`/.netlify/functions/get-registrant-count`)
-    .then((res) => res.text())
-    .then((text) => {
-      setRegCount( initialRegCount + JSON.parse(text).data )
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  // On initial render (componentDidMount) - Fetch registrant data
+  useEffect(updateRegistrants, []);
+
+  function updateRegistrants() {
+    fetch(`/.netlify/functions/get-registrant-count`)
+      .then((res) => res.text())
+      .then((text) => {
+        setRegCount(JSON.parse(text).data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   // Transforms the form data from the React Hook Form output to a format Netlify can read
   const encode = (data) => {
@@ -169,24 +172,6 @@ export default function Layout({ data }) {
                   </div>
                 </div>
               </Carousel.Item>
-              <Carousel.Item>
-                <div className="splash-container">
-                  <div className="static-image-wrapper">
-                    <StaticImage
-                      className="d-block w-100"
-                      src="../images/Bsplash_4.png"
-                      alt="Fourth slide"
-                    />
-                  </div>
-                  <div className="splash-text-container">
-                    <div className="splash fourguy">
-                      <span className="px-3">Girl on a train.</span>
-                      <br />
-                      <span className="px-3">A marrow donor.</span>
-                    </div>
-                  </div>
-                </div>
-              </Carousel.Item>
             </Carousel>
           </div>
           <div className="sec-registration">
@@ -222,6 +207,7 @@ export default function Layout({ data }) {
                   {...register("name", { required: true })}
                   placeholder="Name"
                   minLength="3"
+                  maxLength="50"
                 ></input>
                 {errors.name && errors.name.type === "required" && (
                   <span htmlFor="name" className="error">
@@ -232,6 +218,7 @@ export default function Layout({ data }) {
                   type="text"
                   name="email"
                   placeholder="Email"
+                  maxLength="254"
                   {...register("email", {
                     required: true,
                     pattern:
@@ -252,9 +239,10 @@ export default function Layout({ data }) {
                   type="text"
                   name="phone"
                   placeholder="Phone Number"
+                  maxLength="18"
                   {...register("phone", {
                     required: true,
-                    pattern: /^((\+\d{1,3})\s)?\d{6,14}$/,
+                    pattern: /^((\+\d{1,3})\s)?\d{7,14}$/,
                   })}
                 ></input>
                 {errors.phone && errors.phone.type === "required" && (
@@ -299,7 +287,9 @@ export default function Layout({ data }) {
         <div className="sec-info bg-bmdp-2 py-5 d-flex flex-column align-items-center">
           <div className="sec-counter pt-2 pb-4">
             {/* <div className="registrant-counter">{ formatNumber( data.sanitySiteSettings.registrantCount + data.allSanityRegistrant.totalCount )  }</div> */}
-            <div className="registrant-counter">{ formatNumber( regCount )}</div>
+            <div className="registrant-counter">
+              {regCount > 0 ? formatNumber(regCount) : "..."}
+            </div>
             <div>
               Registrants in Singapore and counting. Join the cause and make the
               community stronger. Give hope to patients in need.
@@ -546,20 +536,28 @@ export default function Layout({ data }) {
           />
         </Modal.Header>
         <Modal.Body>
-          <h1>
-            Thank you, <span className="orange">{modalName}</span>
-          </h1>
-          <p>
-            You’ve done the right thing. Not many have taken this step and we
-            hope that your actions today will inspire others to follow. In a few
-            days, our donor care representatives will be in touch with you via
-            email.
-          </p>
-          <h2 className="orange">We need more help. Share the cause!</h2>
-          <div className="d-flex flex-row justify-content-between">
-            <StaticImage src="../images/icon_FB.png" alt="Facebook"/>
-            <StaticImage src="../images/icon_IG.png" alt="Facebook"/>
-            <StaticImage src="../images/icon_twitter.png" alt="Facebook"/>
+          <div className="p-5 modal-thanks">
+            <h1>
+              Thank you, <span className="orange">{modalName}</span>
+            </h1>
+            <p>
+              You’ve done the right thing. Not many have taken this step and we
+              hope that your actions today will inspire others to follow. In a
+              few days, our donor care representatives will be in touch with you
+              via email.
+            </p>
+            <h2 className="orange">We need more help. Share the cause!</h2>
+            <div className="d-flex flex-row justify-content-center">
+              <div className="social m-3">
+                <StaticImage src="../images/icon_FB.png" alt="Facebook" />
+              </div>
+              <div className="social m-3">
+                <StaticImage src="../images/icon_IG.png" alt="Instagram" />
+              </div>
+              <div className="social m-3">
+                <StaticImage src="../images/icon_twitter.png" alt="Twitter" />
+              </div>
+            </div>
           </div>
         </Modal.Body>
       </Modal>

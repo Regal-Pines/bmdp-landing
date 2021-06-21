@@ -6,9 +6,6 @@ import { graphql } from "gatsby";
 
 export const query = graphql`
   query MyQuery {
-    sanitySiteSettings {
-      registrantCount
-    }
     allSanityRegistrant {
       totalCount
     }

@@ -318,11 +318,11 @@ p {
 
 .modal-header {
   background-color: #FD4F00 ;
-  padding: 0px;
+  padding: 0px !important;
 }
 
 .modal-header .close {
-  margin: 5px 5px;
+  margin: 5px 5px !important;
   font-size: 4rem!important;
   color: white;
   text-shadow: none;
@@ -332,6 +332,10 @@ p {
 
 .modal-body {
   text-align: center;
+}
+
+.modal-thanks h1, .modal-thanks h2 {
+  font-weight: 700;
 }
 
 .orange {

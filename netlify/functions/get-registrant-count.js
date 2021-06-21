@@ -8,22 +8,55 @@ const client = sanityClient({
 
 //https://ee8solvh.api.sanity.io/v2021-06-07/data/query/production/?query=count(*[_type==%22registrant%22])
 const query = "count(*[_type=='registrant'])";
+const querySettings = "*[_id=='siteSettings']{registrantCount}";
 
 exports.handler = async (event, context, callback) => {
-  try {
-    await client.fetch(query).then((registrantCount) => {
+  // Fetch - find number of registrant documents
+  const fetchNumberOfRegDocs = new Promise((resolve, reject) => {
+    try {
+      client.fetch(query).then((count) => {
+        resolve(count);
+      });
+    } catch (error) {
+      console.log(error);
 
+      reject(error);
+    }
+  });
+
+  // Fetch - find site settings: registrant count value
+  const fetchSiteSettingsRegCount = new Promise((resolve, reject) => {
+    try {
+      client.fetch(querySettings).then(([ regCount ]) => {
+        resolve( regCount.registrantCount );
+      });
+    } catch (error) {
+      console.log(error);
+
+      reject( error );
+    }
+  });
+
+  await Promise.allSettled([fetchNumberOfRegDocs, fetchSiteSettingsRegCount]).then(
+    (results) => {
+      const { value } = results.reduce((total, value) => {
+        return { value: value.value + total.value }
+      });
+
+      // Success
       callback(null, {
         statusCode: 200,
-        body: JSON.stringify({ data: registrantCount })
+        body: JSON.stringify({ data: value }),
       });
-    });
-  } catch (error) {
-    console.log(error);
+    },
+    ( error ) => {
+      
+      console.log( error);
 
-    callback(null, {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Failed fetching data" }),
-    });
-  }
+      callback(null, {
+        statusCode: 500,
+        body: JSON.stringify({ error: "Failed fetching data" }),
+      });
+    }
+  );
 };
