@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
 import Carousel from "react-bootstrap/Carousel";
 import Modal from "react-bootstrap/Modal";
 import fetch from "node-fetch";
@@ -125,27 +124,25 @@ export default function Layout({ data }) {
   return (
     <div className="outer-div" id="register">
       <Container fluid>
-        <Navbar bg="bmdp" sticky="top">
-          <div className="d-flex flex-row w-100 justify-content-between px-5 align-items-center">
-            <Navbar.Brand>
-              <StaticImage
-                src="../images/BMDP logo (white).png"
-                width={90}
-                height={90}
-                className="d-inline-block align-top"
-                alt="BMDP Logo"
-              />
-            </Navbar.Brand>
+        <div className="header bg-bmdp">
+          <div className="wrapper">
+            <StaticImage
+              src="../images/BMDP logo (white).png"
+              width={90}
+              height={90}
+              className="d-inline-block align-top"
+              alt="BMDP Logo"
+            />
             <Button
               className="register-button px-5"
               variant="light"
-              href="javascript:document.getElementById('inputName').focus()"
+
+              onClick={ () => { document.getElementById('inputName').focus() } }
             >
               Register Now
             </Button>
           </div>
-        </Navbar>
-
+        </div>
         <div className="sec-banner">
           <div className="hero-carousel w-100 desktop">
             <Carousel controls={false} indicators={false}>
@@ -205,7 +202,7 @@ export default function Layout({ data }) {
               </Carousel.Item>
             </Carousel>
           </div>
-          
+
           <div className="hero-carousel mobile w-100">
             <Carousel controls={false} indicators={false}>
               <Carousel.Item>
@@ -412,7 +409,7 @@ export default function Layout({ data }) {
             </p>
           </div>
           <div className="container sec-info-cards">
-            <div className="row px-5">
+            <div className="row">
               <MiniInfoSnipCell
                 title={"Verify"}
                 text={`Once you’re identified as a match, we will collect a small
@@ -543,12 +540,12 @@ export default function Layout({ data }) {
           </Carousel>
         </div>
         <div className="footer">
-          <div className="footer-logo">
+          {/* <div className="footer-logo">
             <StaticImage
               alt="BMDP Logo"
               src="../images/BMDP logo (pantone) 1.png"
             />
-          </div>
+          </div> */}
           <div className="footer-text">
             <p>
               8 Sinaran Drive, #03-02 Novena Specialist Center, Singapore 307470
