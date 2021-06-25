@@ -87,6 +87,8 @@ export default function Layout({ data }) {
         setShowModal(true);
         setModalName(formData.name);
 
+        window.gtag('event', 'conversion', {'send_to': 'AW-935395305/pdnjCMvB1McCEOn_g74D'});
+
         console.log("Here's the new count test: ", response);
 
         reset();

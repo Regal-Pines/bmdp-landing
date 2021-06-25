@@ -32,6 +32,14 @@ module.exports = {
         lang: `en`,
         start_url: `/`
       }
+    },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          `AW-935395305`
+        ],
+      },
     }
   ],
 };
