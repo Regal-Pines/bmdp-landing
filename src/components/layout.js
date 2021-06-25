@@ -464,7 +464,7 @@ export default function Layout({ data }) {
         <div className="video-container">
           <iframe
             width="100%"
-            src="https://www.youtube.com/embed/S0L5D_eVnk4"
+            src="https://www.youtube.com/embed/pVCQN_RlfMU"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
