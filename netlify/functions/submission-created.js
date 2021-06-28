@@ -3,7 +3,8 @@ const client = sanityClient({
   projectId: process.env.GATSBY_SANITY_PROJECT_ID,
   dataset: process.env.GATSBY_SANITY_PROJECT_DATASET,
   token: process.env.GATSBY_SANITY_TOKEN,
-  useCDN: false,
+  apiVersion: 'v2021-06-07',
+  useCDN: true,
 });
 
 exports.handler = async function (event, context, callback) {

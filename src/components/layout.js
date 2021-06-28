@@ -75,9 +75,17 @@ export default function Layout({ data }) {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    name: "",
+    email: "",
+    phone: "",
+    policy: false,
+  });
 
   const handlePost = (formData, event) => {
+
+    reset();
+
     fetch(`/`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -87,11 +95,11 @@ export default function Layout({ data }) {
         setShowModal(true);
         setModalName(formData.name);
 
-        window.gtag('event', 'conversion', { "registrant_sign_up": formData.email} );
-
-        console.log("Here's the new count test: ", response);
-
-        reset();
+        // Only deploys on production, dev testing will fail
+        if ( window.gtag )
+        window.gtag("event", "conversion", {
+          registrant_sign_up: formData.email,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -138,8 +146,9 @@ export default function Layout({ data }) {
             <Button
               className="register-button px-5"
               variant="light"
-
-              onClick={ () => { document.getElementById('inputName').focus() } }
+              onClick={() => {
+                document.getElementById("inputName").focus();
+              }}
             >
               Register Now
             </Button>
@@ -356,11 +365,29 @@ export default function Layout({ data }) {
                 )}
                 <button className="submit-button"> Submit</button>
                 <p>
-                  Your details will remain private and confidential. We conduct
-                  rigourous screening to make sure that those who qualify meet
-                  our health and safety standards. If selected, you will be
-                  required to perform a cheek swab before you are officially
-                  admitted to the register!
+                  By proceeding, you agree to &nbsp;
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://bmdp.org/privacy-policy"
+                  >
+                    BMDP's Personal Data Protection Policy Statement
+                  </a>
+                  &nbsp; and give consent to BMDP to use your personal data for
+                  the purpose of providing you with the relevant communication
+                  materials.
+                  <br />
+                  <input
+                    type="checkbox"
+                    name="policy"
+                    {...register("policy", { required: true })}
+                  />
+                  &nbsp; I agree &nbsp;
+                  {errors.policy && errors.policy.type === "required" && (
+                    <span htmlFor="policy" className="error">
+                      You must agree with our privacy policy to proceed.
+                    </span>
+                  )}
                 </p>
                 <label
                   htmlFor="got-ya"
@@ -592,7 +619,7 @@ export default function Layout({ data }) {
             <div className="d-flex flex-row justify-content-center">
               <div className="social m-3">
                 <a
-                  href="https://www.facebook.com/sharer/sharer.php?u=https://bmdp.org/"
+                  href="https://www.facebook.com/sharer/sharer.php?u=https://donor.bmdp.org/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -614,7 +641,7 @@ export default function Layout({ data }) {
               </div>
               <div className="social m-3">
                 <a
-                  href="https://twitter.com/intent/tweet?url=https://bmdp.org/&text=I've%20just%20registered%20as%20a%20marrow%20donor!%20You%20too%20can%20join%20the%20cause%20and%20together%20we%20can%20save%20lives."
+                  href="https://twitter.com/intent/tweet?url=https://donor.bmdp.org/&text=I've%20just%20registered%20as%20a%20marrow%20donor!%20You%20too%20can%20join%20the%20cause%20and%20together%20we%20can%20save%20lives."
                   target="_blank"
                   rel="noreferrer"
                 >

@@ -25,10 +25,10 @@ export default function Home({ data }) {
           }
         />
         <meta name="image" content={"../images/BMDP logo (pantone) 1.png"} />
-        <link rel="canonical" href={"https://bmdp.org/"} />
+        <link rel="canonical" href={"https://donor.bmdp.org/"} />
 
         {/* OpenGraph tags */}
-        <meta property="og:url" content={"https://bmdp.org/"} />
+        <meta property="og:url" content={"https://donor.bmdp.org/"} />
         <meta property="og:title" content={"BMDP Singapore | Register to be a marrow donor | Save a life, take the cheek swab!"} />
         <meta
           property="og:description"
