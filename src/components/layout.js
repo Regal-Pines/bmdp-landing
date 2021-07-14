@@ -96,10 +96,15 @@ export default function Layout({ data }) {
         setModalName(formData.name);
 
         // Only deploys on production, dev testing will fail
-        if ( window.gtag )
-        window.gtag("event", "conversion", {
-          registrant_sign_up: formData.email,
-        });
+        if ( window.gtag ) {
+          
+          window.gtag("event", "conversion", {
+            registrant_sign_up: formData.email,
+          });
+          
+          window.gtag('event', 'conversion', {'send_to': 'AW-935395305/pdnjCMvB1McCEOn_g74D'})
+        }
+        
       })
       .catch((error) => {
         console.log(error);
