@@ -161,121 +161,27 @@ export default function Layout({ data }) {
         </div>
         <div className="sec-banner">
           <div className="hero-carousel w-100 desktop">
-            <Carousel controls={false} indicators={false}>
-              <Carousel.Item>
-                <div className="splash-container">
-                  <div className="static-image-wrapper">
-                    <StaticImage
-                      className="d-block w-100"
-                      src="../images/Bsplash_1.png"
-                      alt="First slide"
-                    />
-                  </div>
-                  <div className="splash-text-container">
-                    <div className="splash aisha">
-                      <span className="pl-3">Aisha, 24. Undergraduate.</span>
-                      <br />
-                      <span className="pl-3">A marrow donor.</span>
-                    </div>
-                  </div>
-                </div>
-              </Carousel.Item>
-              <Carousel.Item>
-                <div className="splash-container">
-                  <div className="static-image-wrapper">
-                    <StaticImage
-                      className="d-block w-100"
-                      src="../images/Bsplash_2.png"
-                      alt="Second slide"
-                    />
-                  </div>
-                  <div className="splash-text-container">
-                    <div className="splash vignesh">
-                      <span className="px-3">Vignesh, 33. Sales Manager.</span>
-                      <br />
-                      <span className="px-3">A marrow donor.</span>
-                    </div>
-                  </div>
-                </div>
-              </Carousel.Item>
-              <Carousel.Item>
-                <div className="splash-container">
-                  <div className="static-image-wrapper">
-                    <StaticImage
-                      className="d-block w-100"
-                      src="../images/Bsplash_3.png"
-                      alt="Third slide"
-                    />
-                  </div>
-                  <div className="splash-text-container">
-                    <div className="splash joshua">
-                      <span className="px-3">Joshua, 38. Senior Engineer.</span>
-                      <br />
-                      <span className="px-3">A marrow donor.</span>
-                    </div>
-                  </div>
-                </div>
-              </Carousel.Item>
-            </Carousel>
+            <div className="splash-container">
+              <div className="static-image-wrapper">
+                <StaticImage
+                  className="d-block w-100"
+                  src="../images/BMDP-Phase3_LandingPageSplash.png"
+                  alt="Landing Splash Image"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="hero-carousel mobile w-100">
-            <Carousel controls={false} indicators={false}>
-              <Carousel.Item>
-                <div className="splash-container">
-                  <div className="static-image-wrapper">
-                    <StaticImage
-                      className="d-block w-100"
-                      src="../images/Bsplash_1_mobile.png"
-                      alt="First slide"
-                    />
-                  </div>
-                  <div className="splash-text-container">
-                    <div className="splash aisha">
-                      <span className="pl-3">Aisha, 24. Undergraduate.</span>
-                      <br />
-                      <span className="pl-3">A marrow donor.</span>
-                    </div>
-                  </div>
-                </div>
-              </Carousel.Item>
-              <Carousel.Item>
-                <div className="splash-container">
-                  <div className="static-image-wrapper">
-                    <StaticImage
-                      className="d-block w-100"
-                      src="../images/Bsplash_2_mobile.png"
-                      alt="Second slide"
-                    />
-                  </div>
-                  <div className="splash-text-container">
-                    <div className="splash vignesh">
-                      <span className="px-3">Vignesh, 33. Sales Manager.</span>
-                      <br />
-                      <span className="px-3">A marrow donor.</span>
-                    </div>
-                  </div>
-                </div>
-              </Carousel.Item>
-              <Carousel.Item>
-                <div className="splash-container">
-                  <div className="static-image-wrapper">
-                    <StaticImage
-                      className="d-block w-100"
-                      src="../images/Bsplash_3_mobile.png"
-                      alt="Third slide"
-                    />
-                  </div>
-                  <div className="splash-text-container">
-                    <div className="splash joshua">
-                      <span className="px-3">Joshua, 38. Senior Engineer.</span>
-                      <br />
-                      <span className="px-3">A marrow donor.</span>
-                    </div>
-                  </div>
-                </div>
-              </Carousel.Item>
-            </Carousel>
+            <div className="splash-container">
+              <div className="static-image-wrapper">
+                <StaticImage
+                  className="d-block w-100"
+                  src="../images/BMDP-Phase3_LandingPageSplash.png"
+                  alt="Landing Splash Image"
+                />
+              </div>
+            </div>
           </div>
           <div className="sec-registration mobile">
             <div className="join-the-register">
@@ -493,16 +399,6 @@ export default function Layout({ data }) {
             </div>
           </div>
         </div>
-        <div className="video-container">
-          <iframe
-            width="100%"
-            src="https://www.youtube.com/embed/pVCQN_RlfMU"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
         <div className="donor-testimonials">
           <h1 className="text-center pb-4 bmdp-orange">Donor Testimonials</h1>
           <Carousel indicators={false} interval={null}>
@@ -568,6 +464,30 @@ export default function Layout({ data }) {
                   alt="Muhammad Asyraf"
                   className="donor-avatar p-2 img-fluid"
                   src="../images/donor_Asyraf.png"
+                />
+              </Testimonial>
+            </Carousel.Item>
+            <Carousel.Item>
+              <Testimonial
+                name={"Misha Athira Binte Afendie"}
+                testimonial={`“It was a humbling experience to be found as a match and the process made me realise how lucky I am to save a life.”`}
+              >
+                <StaticImage
+                  alt="Misha Athira Binte Afendie"
+                  className="donor-avatar p-2 img-fluid"
+                  src="../images/donor_MishaAthira.png"
+                />
+              </Testimonial>
+            </Carousel.Item>
+            <Carousel.Item>
+              <Testimonial
+                name={"Emerson Chua"}
+                testimonial={`“I felt a sense of accomplishment after I donated my marrow and I would do it again if I had to!”`}
+              >
+                <StaticImage
+                  alt="Emerson Chua"
+                  className="donor-avatar p-2 img-fluid"
+                  src="../images/donor_EmersonChua.png"
                 />
               </Testimonial>
             </Carousel.Item>
