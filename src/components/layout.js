@@ -40,8 +40,8 @@ function Testimonial(props) {
           </a>
         </div>
       </div>
-      <div className="testimonial-text">
-        <h3 className="pl-5 pt-4">{props.name}</h3>
+      <div className={props.isGreen ? "testimonial-text-green-bg" : "testimonial-text-original-bg"}>
+        <h3 className={props.isGreen ? "donor-testimonials-name-green" : "donor-testimonials-name-original"}>{props.name}</h3>
         <p className="pl-5">{props.testimonial}</p>
       </div>
     </div>
@@ -96,15 +96,15 @@ export default function Layout({ data }) {
         setModalName(formData.name);
 
         // Only deploys on production, dev testing will fail
-        if ( window.gtag ) {
-          
+        if (window.gtag) {
+
           window.gtag("event", "conversion", {
             registrant_sign_up: formData.email,
           });
-          
-          window.gtag('event', 'conversion', {'send_to': 'AW-935395305/pdnjCMvB1McCEOn_g74D'})
+
+          window.gtag('event', 'conversion', { 'send_to': 'AW-935395305/pdnjCMvB1McCEOn_g74D' })
         }
-        
+
       })
       .catch((error) => {
         console.log(error);
@@ -141,13 +141,19 @@ export default function Layout({ data }) {
       <Container fluid>
         <div className="header bg-bmdp">
           <div className="wrapper">
-            <StaticImage
-              src="../images/BMDP logo (white).png"
-              width={90}
-              height={90}
-              className="d-inline-block align-top"
-              alt="BMDP Logo"
-            />
+            <a
+              href="https://bmdp.org/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <StaticImage
+                src="../images/BMDP logo (white).png"
+                width={90}
+                height={90}
+                className="d-inline-block align-top"
+                alt="BMDP Logo"
+              />
+            </a>
             <Button
               className="register-button px-5"
               variant="light"
@@ -399,61 +405,74 @@ export default function Layout({ data }) {
             </div>
           </div>
         </div>
+        <div class="pt-5 pb-5 bg-banner">
+          <div className="video-container">
+            <iframe
+              width="100%"
+              src="https://www.youtube.com/watch?v=TF5Tn_2mllk "
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
         <div className="donor-testimonials">
-          <h1 className="text-center pb-4 bmdp-orange">Donor Testimonials</h1>
+          <h1 className="text-center pb-4 bmdp-orange">Testimonials</h1>
           <Carousel indicators={false} interval={null}>
             <Carousel.Item>
               <Testimonial
-                name={"Tamil Selvi"}
-                href={"https://bmdp.org/testimonials"}
-                testimonial={`“The donation experience through the PBSC method was
-                worthwhile. It even motivated me to create more awareness
-                within the community to help improve the chances of other
-                patients in finding a donor match.”`}
+                name={"Ananth, Donor"}
+                testimonial={`“We are not just saving a life. We are helping a whole family. Not everybody gets this kind of opportunity. I am glad I got this opportunity to make a difference in someone's life.”`}
               >
                 <StaticImage
-                  alt="Tamil Selvi"
+                  alt="Ananth"
                   className="donor-avatar p-2 img-fluid"
-                  src="../images/donor_TamilS.png"
+                  src="../images/1_Ananth.png"
                 />
               </Testimonial>
             </Carousel.Item>
             <Carousel.Item>
               <Testimonial
-                name={"Marie Ann Wong"}
-                href={"https://www.youtube.com/watch?v=zHv24sJ-Emw"}
-                testimonial={`“I would urge everyone to put their fears aside and be
-                confident as donating bone marrow is a safe and easy
-                procedure with no long-term side effects. A simple cheek
-                swab can help increase the odds of giving someone out there
-                in need with a second chance at life.”`}
+                name={"Sophia Tan, Patient"}
+                testimonial={`“As I told my donor, the second lease of life that she has given to me, has allowed me to continue to do good and add value to my loved ones and friends. Her single decision to say “Yes!” continues to reverberate in many, many lives around me. Something that I truly am grateful for.”`}
+                isGreen={true}
               >
                 <StaticImage
-                  alt="Marie Ann Wong"
+                  alt="Sophia Tan"
                   className="donor-avatar p-2 img-fluid"
-                  src="../images/donor_marieanne.png"
+                  src="../images/2_Sophia.png"
                 />
               </Testimonial>
             </Carousel.Item>
             <Carousel.Item>
               <Testimonial
-                name={"Kelvin Lin"}
-                href={"https://www.youtube.com/watch?v=aX5j0QVHqB4"}
-                testimonial={`“I went through the PBSC method and the process is safe.
-                Being a father now makes me feel that the whole donation was
-                more meaningful. My biggest reward is having the opportunity
-                to save someone’s life.”`}
+                name={"Er Qi Yang, Donor"}
+                testimonial={`“I felt really happy for the patient and grateful that I had the opportunity to save a life.”`}
               >
                 <StaticImage
-                  alt="Kelvin Lin"
+                  alt="Er Qi Yang"
                   className="donor-avatar p-2 img-fluid"
-                  src="../images/donor_KelvinL.png"
+                  src="../images/3_ErQiYang.png"
                 />
               </Testimonial>
             </Carousel.Item>
             <Carousel.Item>
               <Testimonial
-                name={"Muhammad Asyraf"}
+                name={"Miranti Adriani, Patient"}
+                testimonial={`“I would say that battling cancer is like running a marathon. The journey will take quite some time, but do not give up.  You will reach the finish line. Words cannot describe how thankful I am for what my donor has done to save my life.”`}
+                isGreen={true}
+              >
+                <StaticImage
+                  alt="Miranti Adriani"
+                  className="donor-avatar p-2 img-fluid"
+                  src="../images/4_Miranti.png"
+                />
+              </Testimonial>
+            </Carousel.Item>
+            <Carousel.Item>
+              <Testimonial
+                name={"Muhammad Asyraf, Donor"}
                 href={"https://www.youtube.com/watch?v=6RbaPEEKRvg"}
                 testimonial={`“Educate & understand why and who you’re helping so you will
                 remain committed in your journey after you sign up. I was
@@ -469,25 +488,26 @@ export default function Layout({ data }) {
             </Carousel.Item>
             <Carousel.Item>
               <Testimonial
-                name={"Misha Athira Binte Afendie"}
-                testimonial={`“It was a humbling experience to be found as a match and the process made me realise how lucky I am to save a life.”`}
+                name={"Ian Lim, Patient"}
+                testimonial={`“I’m a very grateful individual who has been blessed with a second chance in life.  No one wants leukaemia – but a tremendous amount of good has come from the experience of beating it. Now more than ever, I am an individual dedicated to becoming a better human being, husband, son, brother, friend and business leader.”`}
+                isGreen={true}
               >
                 <StaticImage
-                  alt="Misha Athira Binte Afendie"
+                  alt="Ian Lim"
                   className="donor-avatar p-2 img-fluid"
-                  src="../images/donor_MishaAthira.png"
+                  src="../images/6_Ian.png"
                 />
               </Testimonial>
             </Carousel.Item>
             <Carousel.Item>
               <Testimonial
-                name={"Emerson Chua"}
-                testimonial={`“I felt a sense of accomplishment after I donated my marrow and I would do it again if I had to!”`}
+                name={"Evangeline Koh, Donor"}
+                testimonial={`“You never know how small an action of yours could mean the world to another. Like the saying goes, 'one man's trash is another man's treasure'.”`}
               >
                 <StaticImage
-                  alt="Emerson Chua"
+                  alt="Evangeline Koh"
                   className="donor-avatar p-2 img-fluid"
-                  src="../images/donor_EmersonChua.png"
+                  src="../images/7_Evangeline.png"
                 />
               </Testimonial>
             </Carousel.Item>
