@@ -160,7 +160,7 @@ html {
 }
 
 .testimonial-text-original-bg {
-    background-image: url("../images/quote\ icon.png");
+    background-image: url("../images/quote_icon.png");
     background-repeat: no-repeat;
     background-position: top left;
     width: 50%;
@@ -171,7 +171,7 @@ html {
 }
 
 .testimonial-text-green-bg {
-    background-image: url("../images/quote\ icon\ green.png");
+    background-image: url("../images/quote_icon_green.png");
     background-repeat: no-repeat;
     background-position: top left;
     width: 50%;
@@ -651,6 +651,30 @@ html {
 
     .testimonial-text {
         width: 65%;
+    }
+
+    .testimonial-text-original-bg {
+        margin-top: 1rem;
+        background-image: url("../images/quote_icon.png");
+        background-repeat: no-repeat;
+        background-position: top left;
+        width: 80%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+    }
+
+    .testimonial-text-green-bg {
+        margin-top: 1rem;
+        background-image: url("../images/quote_icon_green.png");
+        background-repeat: no-repeat;
+        background-position: top left;
+        width: 80%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
     }
 
     .footer-text {
