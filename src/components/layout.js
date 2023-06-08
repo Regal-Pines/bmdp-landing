@@ -326,97 +326,7 @@ export default function Layout({ data }) {
             </div>
           </div>
         </div>
-        <div className="sec-info bg-bmdp-2 d-flex flex-column align-items-center">
-          <div className="sec-counter pt-2 pb-4">
-            <div className="registrant-counter">
-              {regCount > 0 ? (
-                formatNumber(regCount)
-              ) : (
-                <div>
-                  <span className="one">.</span>
-                  <span className="two">.</span>
-                  <span className="three">.</span>
-                </div>
-              )}
-            </div>
-            <div>
-              Registrants in Singapore and counting. Join the cause and make the
-              community stronger. Give hope to patients in need.
-            </div>
-          </div>
-          <div className="sec-info-text py-5">
-            <h1>What Happens When I'm Selected?</h1>
-            <p>
-              The odds of you being called upon to be a donor in your lifetime
-              are very slim, but when the opportunity does come knocking, you
-              are often the very last line of hope for survival. Blood diseases
-              can affect anyone. Our aim is to be able to match every patient
-              with a donor as soon as they require one.
-            </p>
-          </div>
-          <div className="container sec-info-cards">
-            <div className="row">
-              <MiniInfoSnipCell
-                title={"Verify"}
-                text={`Once you’re identified as a match, we will collect a small
-                  blood sample from you to ensure you are the right fit.`}
-              >
-                <StaticImage
-                  alt="Verify Icon"
-                  className="img-fluid"
-                  src="../images/icon_touch.png"
-                />
-              </MiniInfoSnipCell>
-              <MiniInfoSnipCell
-                title={"Workup"}
-                text={`We will introduce you to your doctor who will conduct a
-                  thorough check-up to ensure that you are fit to donate.`}
-              >
-                <StaticImage
-                  alt="Workup Icon"
-                  className="img-fluid"
-                  src="../images/icon_workup.png"
-                />
-              </MiniInfoSnipCell>
-              <MiniInfoSnipCell
-                title={"Donate"}
-                text={`You may opt for the Peripheral Blood Stem Cell or Bone Marrow
-                  Collection. The donation method may also depend on the
-                  patient’s needs.`}
-              >
-                <StaticImage
-                  alt="Donate Icon"
-                  className="img-fluid"
-                  src="../images/icon_give.png"
-                />
-              </MiniInfoSnipCell>
-              <MiniInfoSnipCell
-                title={"Recover"}
-                text={`Depending on the donation method, you may experience
-                  short-term side effects. Your stem cells/bone marrow will
-                  regenerate within 6 weeks.`}
-              >
-                <StaticImage
-                  alt="Recover Icon"
-                  className="img-fluid"
-                  src="../images/icon_recover.png"
-                />
-              </MiniInfoSnipCell>
-            </div>
-          </div>
-        </div>
-        <div class="pt-5 pb-5 bg-banner">
-          <div className="video-container">
-            <iframe
-              width="100%"
-              src="https://www.youtube.com/embed/TF5Tn_2mllk "
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
+
         <div className="donor-testimonials">
           <h1 className="text-center pb-4 bmdp-orange">Testimonials</h1>
           <Carousel indicators={false} interval={null}>
@@ -512,6 +422,96 @@ export default function Layout({ data }) {
               </Testimonial>
             </Carousel.Item>
           </Carousel>
+        </div>
+        <div className="sec-info bg-bmdp-2 d-flex flex-column align-items-center">
+          <div className="sec-counter pt-2 pb-4">
+            <div className="registrant-counter">
+              {regCount > 0 ? (
+                formatNumber(regCount)
+              ) : (
+                <div>
+                  <span className="one">.</span>
+                  <span className="two">.</span>
+                  <span className="three">.</span>
+                </div>
+              )}
+            </div>
+            <div>
+              Registrants in Singapore and counting. However, 50 patients are still waiting for a match every month. Join the cause and make the community stronger. Give hope to patients in need
+            </div>
+          </div>
+          <div className="sec-info-text py-5">
+            <h1>What Happens When I'm Selected?</h1>
+            <p>
+              The odds of you being called upon to be a donor in your lifetime
+              are very slim, but when the opportunity does come knocking, you
+              are often the very last line of hope for survival. Blood diseases
+              can affect anyone. Our aim is to be able to match every patient
+              with a donor as soon as they require one.
+            </p>
+          </div>
+          <div className="container sec-info-cards">
+            <div className="row">
+              <MiniInfoSnipCell
+                title={"Verify"}
+                text={`Once you’re identified as a match, we will collect a small
+                  blood sample from you to ensure you are the right fit.`}
+              >
+                <StaticImage
+                  alt="Verify Icon"
+                  className="img-fluid"
+                  src="../images/icon_touch.png"
+                />
+              </MiniInfoSnipCell>
+              <MiniInfoSnipCell
+                title={"Workup"}
+                text={`We will introduce you to your doctor who will conduct a
+                  thorough check-up to ensure that you are fit to donate.`}
+              >
+                <StaticImage
+                  alt="Workup Icon"
+                  className="img-fluid"
+                  src="../images/icon_workup.png"
+                />
+              </MiniInfoSnipCell>
+              <MiniInfoSnipCell
+                title={"Donate"}
+                text={`You may opt for the Peripheral Blood Stem Cell or Bone Marrow
+                  Collection. The donation method may also depend on the
+                  patient’s needs.`}
+              >
+                <StaticImage
+                  alt="Donate Icon"
+                  className="img-fluid"
+                  src="../images/icon_give.png"
+                />
+              </MiniInfoSnipCell>
+              <MiniInfoSnipCell
+                title={"Recover"}
+                text={`Depending on the donation method, you may experience
+                  short-term side effects. Your stem cells/bone marrow will
+                  regenerate within 6 weeks.`}
+              >
+                <StaticImage
+                  alt="Recover Icon"
+                  className="img-fluid"
+                  src="../images/icon_recover.png"
+                />
+              </MiniInfoSnipCell>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5 pb-5 bg-banner">
+          <div className="video-container">
+            <iframe
+              width="100%"
+              src="https://www.youtube.com/embed/TF5Tn_2mllk "
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
         <div className="footer">
           {/* <div className="footer-logo">
