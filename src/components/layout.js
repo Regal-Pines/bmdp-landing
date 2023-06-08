@@ -437,7 +437,7 @@ export default function Layout({ data }) {
               )}
             </div>
             <div>
-              Registrants in Singapore and counting. However, 50 patients are still waiting for a match every month. Join the cause and make the community stronger. Give hope to patients in need
+              Registrants in Singapore and counting. However, 50 patients are still waiting for a match every month. Join the cause and make the community stronger. Give hope to patients in need.
             </div>
           </div>
           <div className="sec-info-text py-5">
