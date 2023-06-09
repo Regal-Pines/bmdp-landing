@@ -41,7 +41,7 @@ function Testimonial(props) {
         </div>
       </div>
       <div className={props.isGreen ? "testimonial-text-green-bg" : "testimonial-text-original-bg"}>
-        <h3 className={props.isGreen ? "donor-testimonials-name-green" : "donor-testimonials-name-original"}>{props.name}</h3>
+        <h3 className={props.isGreen ? "donor-testimonials-name-black pl-5" : "donor-testimonials-name-original pl-5"}>{props.name}</h3>
         <p className="pl-5">{props.testimonial}</p>
       </div>
     </div>
@@ -437,7 +437,7 @@ export default function Layout({ data }) {
               )}
             </div>
             <div>
-              Registrants in Singapore and counting. However, 50 patients are still waiting for a match every month. Join the cause and make the community stronger. Give hope to patients in need.
+              <h1>Registrants in Singapore and counting.</h1> <p>However, 50 patients are still waiting for a match every month. Join the cause and make the community stronger. Give hope to patients in need.</p>
             </div>
           </div>
           <div className="sec-info-text py-5">
